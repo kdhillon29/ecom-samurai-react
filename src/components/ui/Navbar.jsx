@@ -15,7 +15,7 @@ const Navbar = ({ setCartOpen, setMenuOpen }) => {
           <img src={NavLogo} alt="" className="nav__logo" />
         </Link>
         <div className="nav__links">
-          <Link to="/" className="nav__link">
+          <Link to="/products" className="nav__link">
             Products
           </Link>
           <button className="nav__cart" onClick={() => setCartOpen(true)}>
