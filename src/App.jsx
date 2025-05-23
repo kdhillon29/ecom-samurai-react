@@ -1,8 +1,11 @@
 import Nav from "./components/Nav";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/HomePage";
-import Products from "./pages/ProductsPage";
+import ProductsPage from "./pages/ProductsPage";
+import ProductPage from "./pages/ProductPage";
 import { AppContextProvider } from "./context/AppContextProvider";
+import Footer from "./components/Footer";
+import Newsletter from "./components/Newsletter";
 
 function App() {
   return (
@@ -11,8 +14,11 @@ function App() {
         <Nav />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/products" element={<Products />} />
+          <Route path="/products" element={<ProductsPage />} />
+          <Route path="/products/:id" element={<ProductPage />} />
         </Routes>
+        <Newsletter />
+        <Footer />
       </Router>
     </AppContextProvider>
   );
