@@ -1,7 +1,10 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
+import { useContext } from "react";
 
 const AppContext = createContext();
+
+export const useProduct = () => useContext(AppContext);
 
 export function AppContextProvider({ children }) {
   const [products, setProducts] = useState([]);
@@ -19,8 +22,5 @@ export function AppContextProvider({ children }) {
   useEffect(() => {
     fetchProducts();
   }, []);
-  return (
-    <AppContext.Provider value={{ products }}>{children}</AppContext.Provider>
-  );
+  return <AppContext value={{ products }}>{children}</AppContext>;
 }
-export default AppContext;
