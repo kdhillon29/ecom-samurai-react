@@ -1,6 +1,6 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { useContext } from "react";
+import CartProvider from "./cart/CartProvider";
 
 const AppContext = createContext();
 
@@ -22,5 +22,9 @@ export function AppContextProvider({ children }) {
   useEffect(() => {
     fetchProducts();
   }, []);
-  return <AppContext value={{ products }}>{children}</AppContext>;
+  return (
+    <AppContext value={{ products }}>
+      <CartProvider>{children}</CartProvider>
+    </AppContext>
+  );
 }
