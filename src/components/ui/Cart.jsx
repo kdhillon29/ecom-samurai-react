@@ -123,12 +123,14 @@ const Cart = ({ cartOpen, setCartOpen }) => {
             <h4 className="cart__footer__title">Subtotal</h4>
             <span className="cart__footer__subtotal">${Subtotal()}</span>
           </div>
-          <button
-            className="cart__footer__btn"
-            onClick={() => alert("Haven't implemented this feature yet!")}
-          >
-            Go to checkout
-          </button>
+          {cart.length > 0 && (
+            <button
+              className="cart__footer__btn"
+              onClick={() => alert("Haven't implemented this feature yet!")}
+            >
+              Go to checkout
+            </button>
+          )}
         </div>
       </nav>
     </div>

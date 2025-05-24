@@ -223,7 +223,7 @@ button {
   height: 100%;
   width: 100%;
   transform: translateX(100%);
-  max-width: 480px;
+  max-width: 380px;
   transition: 300ms ease;
   display: flex;
   flex-direction: column;
