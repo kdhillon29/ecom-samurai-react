@@ -6,15 +6,18 @@ import axios from "axios";
 import ProductPageSkeleton from "../components/ui/ProductPageSkeleton";
 import ProductSkeleton from "../components/ui/ProductSkeleton";
 import SuccessPopup from "../components/ui/SuccessPopup";
+import { useCart } from "../context/cart/CartContext";
 
 const ProductPage = () => {
-  const { products, addToCart } = useProduct();
+  const { products } = useProduct();
   const { id } = useParams();
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [loading, setLoading] = useState(true);
   const [successOpen, setSuccessOpen] = useState(false);
+  const { cart, dispatch } = useCart();
+  console.log(cart);
 
   async function fetchProduct() {
     try {
@@ -119,7 +122,10 @@ const ProductPage = () => {
                   <button
                     className="selected-product__add"
                     onClick={() => {
-                      addToCart(selectedProduct, quantity);
+                      dispatch({
+                        type: "ADD_ITEM",
+                        payload: { product: selectedProduct, quantity },
+                      });
                       openSuccess();
                     }}
                   >

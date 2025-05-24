@@ -3,10 +3,11 @@ import NavLogo from "../../assets/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-// import { AppContext } from "../../context/AppContext";
+
+import { useCart } from "../../context/cart/CartContext";
 
 const Navbar = ({ setCartOpen, setMenuOpen }) => {
-  // const { cartLength } = useContext(AppContext)
+  const { cart } = useCart();
 
   return (
     <nav className="nav">
@@ -23,7 +24,9 @@ const Navbar = ({ setCartOpen, setMenuOpen }) => {
               icon={faCartShopping}
               className="nav__cart__icon"
             />
-            {/* {cartLength() > 0 && <span className="cart__length">{cartLength()}</span>} */}
+            {cart.length > 0 && (
+              <span className="cart__length">{cart.length}</span>
+            )}
           </button>
           <button className="nav__menu" onClick={() => setMenuOpen(true)}>
             <FontAwesomeIcon icon={faBars} />
